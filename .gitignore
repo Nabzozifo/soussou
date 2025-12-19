@@ -1,0 +1,43 @@
+#################################
+# GLOBAL
+#################################
+.env
+.env.*
+*.local
+*.log
+.DS_Store
+Thumbs.db
+
+#################################
+# BACKEND - sosso-backend (Laravel)
+#################################
+/sosso-backend/vendor
+/sosso-backend/node_modules
+/sosso-backend/storage/*.key
+/sosso-backend/storage/logs/*.log
+/sosso-backend/public/storage
+/sosso-backend/public/build
+/sosso-backend/bootstrap/cache/*.php
+!/sosso-backend/bootstrap/cache/.gitignore
+/sosso-backend/database/*.sqlite
+/sosso-backend/database/*.sqlite-journal
+
+#################################
+# FRONTEND - soussou-game (React/Vite)
+#################################
+/soussou-game/node_modules
+/soussou-game/dist
+/soussou-game/dist-ssr
+/soussou-game/.env*
+/soussou-game/npm-debug.log*
+/soussou-game/yarn-error.log*
+/soussou-game/pnpm-debug.log*
+
+#################################
+# IDE / EDITORS
+#################################
+.vscode
+.idea
+*.swp
+*.swo
+*~

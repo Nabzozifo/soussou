@@ -1,0 +1,50 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
+
+class User extends Authenticatable
+{
+    use HasApiTokens, HasFactory, Notifiable;
+
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+        'is_admin',
+        'preferred_language',
+    ];
+
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    protected function casts(): array
+    {
+        return [
+            'email_verified_at' => 'datetime',
+            'password' => 'hashed',
+            'is_admin' => 'boolean',
+        ];
+    }
+
+    public function progress()
+    {
+        return $this->hasOne(UserProgress::class);
+    }
+
+    public function gameSessions()
+    {
+        return $this->hasMany(GameSession::class);
+    }
+
+    public function blogPosts()
+    {
+        return $this->hasMany(BlogPost::class, 'author_id');
+    }
+}
